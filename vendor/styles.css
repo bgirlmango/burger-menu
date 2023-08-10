@@ -1,0 +1,149 @@
+:root {
+  --main: #ff6f1b;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.page {
+  height: 100dvh;
+}
+
+.header {
+  padding: 20px 50px;
+  margin: 0 auto;
+  max-width: 1280px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  height: 40px;
+  width: 40px;
+}
+
+.menu {
+  height: fit-content;
+}
+
+.menu_opened {
+  visibility: visible!important;
+}
+
+.menu__list {
+  display: flex;
+  column-gap: 20px;
+}
+
+.menu__item {
+  cursor: pointer;
+}
+
+.burger-menu {
+  visibility: hidden;
+  opacity: 0;
+  position: relative;
+  height: 16px;
+  width: 20px;
+}
+
+.burger-menu__check {
+  position: absolute;
+  height: 16px;
+  width: 20px;
+  z-index: 1;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.burger-menu__container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
+
+.lines {
+  display: inline-block;
+  width: 20px;
+  height: 2px;
+  background-color: var(--main);
+}
+
+.line__top {
+  transition: .2s ease-in-out;
+}
+
+.line__middle {
+  transition: .2s ease-in-out;
+}
+
+.line__bottom {
+  transition: .2s ease-in-out;
+}
+
+.burger-menu__check:checked ~ .burger-menu__container .line__top {
+  transition: .2s ease-in-out;
+  transform-origin: 0 0;
+  transform: rotate(45deg) translate(1px, -1px);
+}
+
+.burger-menu__check:checked ~ .burger-menu__container .line__middle {
+  transition: .2s ease-in-out;
+  transform: scale(0);
+}
+
+.burger-menu__check:checked ~ .burger-menu__container .line__bottom {
+  transition: .2s ease-in-out;
+  transform-origin: 0 100%;
+  transform: rotate(-45deg) translate(1px, 0px);
+}
+
+@media screen and (max-width: 500px) {
+  .header {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .menu {
+    visibility: hidden;
+    transform: translateY(-100vh);
+    background-color: #FFEFD5;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.5s ease, visibility 0.5s ease;
+  }
+
+  .burger-menu {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1;
+  }
+
+  .menu__list {
+    flex-direction: column;
+    align-items: center;
+    row-gap: 40px;
+  }
+
+}
